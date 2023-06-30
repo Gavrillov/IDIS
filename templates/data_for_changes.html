@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Главная</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  {% set active_tab = 'data_for_changes' %}
+  {% include 'header.html' %}
+
+  <div class="content">
+    <div class="container" style="color:black;">
+      <div class="form-container">
+         <h1 style="text-align: center;"><font size="6">Данные на изменения</font></h1>
+        <br>
+        <div class="card-container">
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Модальное окно -->
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Добавить сотрудника</h2>
+            <form id="employeeForm">
+              <input type="text" id="surnameInput" placeholder="Фамилия">
+              <input type="text" id="nameInput" placeholder="Имя">
+              <input type="text" id="telephoneInput" placeholder="Телефон">
+              <input type="text" id="mailInput" placeholder="Почта">
+              <button type="button" onclick="addEmployee()">Добавить</button>
+            </form>
+          </div>
+        </div>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

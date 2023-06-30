@@ -1,0 +1,398 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.container {
+  max-width: 1450px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  background-color: #222;
+  padding: 15px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+header .logo {
+  float: left;
+  margin-right: 20px;
+  margin-top: -30px;
+}
+
+header .logo img {
+  max-width: 100px;
+  height: auto;
+  display: block;
+}
+
+header .buttons {
+  float: right;
+}
+
+header .buttons button {
+  margin-left: 10px;
+  border: none;
+  background-color: #666;
+  color: #fff;
+  padding: 15px 32px;
+  font-size: 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+header .buttons button:hover {
+  background-color: #f6f6f6;
+  color: black;
+}
+
+header .buttons .active {
+  background-color: #f6f6f6;
+  color: black;
+}
+
+.content {
+  padding: 150px 0;
+  margin-top: -10px;
+}
+
+.form-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  background-color: rgba(190, 190, 190, 0.7);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.search {
+  width: 450px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 19px;
+  margin-top: -10px;
+  background-color: rgba(250, 250, 250, 1);
+  border-style: solid;
+}
+
+.content h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.content p {
+  font-size: 25px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.content strong {
+  color: #000;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 40px;
+}
+
+.card {
+  flex-basis: calc(33.33% - 50px);
+  margin-bottom: 20px;
+  border: 1px solid #777;
+  border-radius: 16px;
+  padding: 10px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.card ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.card ul li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.card ul li img {
+  max-width: 100px;
+  margin-right: 10px;
+}
+
+.documents {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.document {
+  flex: 0 0 calc(33.33% - 10px);
+  margin-right: 10px;
+}
+
+.document-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"] {
+  width: 98%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 18px;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group input[type="email"]:focus {
+  border-color: #888;
+}
+
+.form-group button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  background-color: #222;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.form-group button:hover {
+  background-color: #444;
+}
+
+.document-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.document-card {
+  flex: 0 0 calc(29% - 30px);
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 15px;
+  border: 1px solid #000;
+  position: relative;
+}
+
+/* Дополнительные стили */
+.document-card h3 {
+  margin-top: 0;
+}
+
+.document-card img {
+  width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.document-card .delete-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ff0000;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.add-document-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 20% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 12px;
+  width: 500px;
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.file-input {
+  margin-bottom: 10px;
+}
+
+.file-input label {
+  display: inline-block;
+  padding: 8px 20px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+.file-input input[type="file"] {
+  display: none;
+}
+
+.file-name {
+  margin-left: 10px;
+}
+
+ /* Стили для модального окна */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.add-button {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.add-button button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.add-button button:hover {
+  background-color: #388E3C;
+}
+
+.delete-button {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+}
+
+.delete-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.5);
+}
+
+.delete-button:active {
+  background-color: #d63031;
+  transform: translateY(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

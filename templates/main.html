@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Главная</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  {% set active_tab = 'main' %}
+  {% include 'header.html' %}
+
+
+  <div class="content">
+    <div class="container" style="color:black;">
+      <div class="form-container">
+         <h1 style="text-align: center;"><font size="6">Сотрудники</font></h1>
+        <br>
+          <div class="add-button">
+          <button onclick="openModal()">Добавить сотрудника</button>
+        </div>
+        <div class="card-container">
+          {% for user in users %}
+          <div class="card" onclick="location.href='/user/{{ user['_id'] }}';">
+              <h1 style="text-align: center;"><font size="5">{{ user['surname'] }} {{ user['name'] }}</font></h1>
+             {% if user['documents'] %}
+              {% for document in user['documents'] %}
+                  <p>-{{ document['type_documents'] }}</p>
+              {% endfor %}
+            {% else %}
+              <p>Нет доступных документов.</p>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Модальное окно -->
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Добавить сотрудника</h2>
+            <form id="employeeForm">
+              <input type="text" id="surnameInput" placeholder="Фамилия">
+              <input type="text" id="nameInput" placeholder="Имя">
+              <input type="text" id="telephoneInput" placeholder="Телефон">
+              <input type="text" id="mailInput" placeholder="Почта">
+              <button type="button" onclick="addEmployee()">Добавить</button>
+            </form>
+          </div>
+        </div>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

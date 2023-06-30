@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Информация о пользователе</title>
+
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+  {% set active_tab = 'main' %}
+  {% include 'header.html' %}
+
+  <div class="content">
+    <div class="container" style="color:black;">
+      <div class="form-container">
+        <h1 style="text-align: center;"><font size="6">Информация о сотруднике</font></h1>
+        <form action="/user/{{ user['_id'] }}/edit" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" value="{{ user['name'] }}" required>
+          </div>
+          <div class="form-group">
+            <label for="surname">Фамилия:</label>
+            <input type="text" id="surname" name="surname" value="{{ user['surname'] }}" required>
+          </div>
+          <div class="form-group">
+            <label for="telephone">Телефон:</label>
+            <input type="tel" id="telephone" name="telephone" value="{{ user['telephone'] }}" required>
+          </div>
+          <div class="form-group">
+            <label for="mail">Email:</label>
+            <input type="email" id="mail" name="mail" value="{{ user['mail'] }}" required>
+          </div>
+          <div class="form-group">
+            <button type="submit">Сохранить</button>
+          </div>
+        </form>
+
+       <h2>Документы</h2>
+          <div class="add-button">
+          <button onclick="openModal()">Добавить документ</button>
+              </div>
+          <div class="document-cards">
+            {% if user['documents'] %}
+              {% for document in user['documents'] %}
+                <div class="document-card">
+                  <h3>{{ document['type_documents'] }}</h3>
+                  <img src="data:image/jpeg;base64,{{ document['document'] }}" alt="Документ">
+                  <form action="/user/{{ user['_id'] }}/delete" method="POST" class="delete-form">
+                    <input type="hidden" name="type_documents" value="{{ document['type_documents'] }}">
+                    <input type="hidden" name="document" value="{{ document['document'] }}">
+                    <button type="submit" class="delete-button">Удалить</button>
+                  </form>
+                </div>
+              {% endfor %}
+            {% else %}
+              <p>Нет доступных документов.</p>
+            {% endif %}
+        </div>
+          <form action="/user/{{ user['_id'] }}/remove" method="POST" class="delete-form_user" onsubmit="return confirmDelete()">
+        <button type="submit" class="delete-button">Удалить сотрудника</button>
+      </form>
+      </div>
+    </div>
+  </div>
+
+<!-- Модальное окно -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Загрузка документа</h2>
+        <form id="uploadForm" method="POST" action="/user/{{ user['_id'] }}/append" enctype="multipart/form-data">
+            <label for="type_documents">Тип документа:</label>
+            <input type="text" id="type_documents" name="type_documents" required><br><br>
+            <label for="document">Документ:</label>
+            <input type="file" id="document" name="document" required><br><br>
+            <input type="submit" value="Загрузить">
+        </form>
+    </div>
+</div>
+
+<!-- Модальное окно подтверждения удаления -->
+<div id="deleteModal" class="modal">
+  <div class="modal-content">
+    <h2>Вы точно хотите удалить сотрудника?</h2>
+    <div class="button-container">
+      <button class="confirm-button" onclick="deleteEmployee()">Да</button>
+      <button class="cancel-button" onclick="closeDeleteModal()">Нет</button>
+    </div>
+  </div>
+</div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

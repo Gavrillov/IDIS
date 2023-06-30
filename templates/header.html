@@ -1,0 +1,12 @@
+<header>
+  <div class="container">
+    <input class="search" type="search" name="search" placeholder="Поиск: " required>
+    <div class="buttons">
+      <button class="{% if active_tab == 'main' %}active{% endif %}" onclick="location.href='/main'">Сотрудники</button>
+      <button class="{% if active_tab == 'contracts' %}active{% endif %}" onclick="location.href='/contracts'">Договора</button>
+      <button class="{% if active_tab == 'partners' %}active{% endif %}" onclick="location.href='/partners'">Партнёры</button>
+      <button class="{% if active_tab == 'trading' %}active{% endif %}" onclick="location.href='/trading'">Торги</button>
+      <button class="{% if active_tab == 'data_for_changes' %}active{% endif %}" onclick="location.href='/data_for_changes'">Данные на изменения</button>
+    </div>
+  </div>
+</header>
